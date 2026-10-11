@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Demo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        h2 {
+            color: darkgreen;
+        }
+
+        /* Shared look so the differences are easy to see */
+        .box,
+        .item,
+        .demo a {
+            background-color: #bde0fe;
+            border: 2px solid #1d3b66;
+            padding: 10px;
+            margin: 8px;
+            width: 140px;
+            height: 50px;
+        }
+
+        .item {
+            background-color: #ffd6a5;
+        }
+
+        .demo a {
+            background-color: #caffbf;
+        }
+
+        .demo {
+            background-color: white;
+            border: 1px solid #999999;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== Experiment 1: default behaviour (div=block, span/a=inline) ===== */
+        /* nothing added: div is block, span and a are inline */
+
+        /* ===== Experiment 2: display: block ===== */
+        .demo-block .box,
+        .demo-block .item,
+        .demo-block a {
+            display: block;
+        }
+
+        /* ===== Experiment 3: display: inline ===== */
+        .demo-inline .box,
+        .demo-inline .item,
+        .demo-inline a {
+            display: inline;
+        }
+
+        /* ===== Experiment 4: display: inline-block ===== */
+        .demo-inline-block .box,
+        .demo-inline-block .item,
+        .demo-inline-block a {
+            display: inline-block;
+        }
+
+        /* ===== Experiment 5: display: flex on the parent ===== */
+        .demo-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Display Property Experiment</h1>
+    <p>Look at width, height, new lines, margin and padding in each box.</p>
+    <p><a href="index.html">Back to Flexbox Quest</a></p>
+
+    <h2>1. Default</h2>
+    <div class="demo">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+
+        <span class="item">Item 1</span>
+        <span class="item">Item 2</span>
+
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+    </div>
+
+    <h2>2. display: block</h2>
+    <div class="demo demo-block">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+
+        <span class="item">Item 1</span>
+        <span class="item">Item 2</span>
+
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+    </div>
+
+    <h2>3. display: inline</h2>
+    <div class="demo demo-inline">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+
+        <span class="item">Item 1</span>
+        <span class="item">Item 2</span>
+
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+    </div>
+
+    <h2>4. display: inline-block</h2>
+    <div class="demo demo-inline-block">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+
+        <span class="item">Item 1</span>
+        <span class="item">Item 2</span>
+
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+    </div>
+
+    <h2>5. display: flex (on the parent)</h2>
+    <div class="demo demo-flex">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+
+        <span class="item">Item 1</span>
+        <span class="item">Item 2</span>
+
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+    </div>
+
+</body>
+</html>

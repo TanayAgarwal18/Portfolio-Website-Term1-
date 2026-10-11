@@ -1,0 +1,917 @@
+/* ==========================================================
+   TANAY AGARWAL - PORTFOLIO
+   Dark developer-terminal look with a neon cyan accent.
+   Only HTML + CSS. No JavaScript, no frameworks.
+
+   CONTENTS
+   1. Colours (variables)
+   2. Base styles
+   3. Navbar
+   4. Buttons
+   5. Cards
+   6. Hero
+   7. Sections
+   8. Bento grid (About + Beyond Code)
+   9. Skills, pills and small rows
+   10. Projects
+   11. Timeline
+   12. Contact and form
+   13. Footer
+   14. Case study page
+   15. Animations
+   16. Responsive (media queries)
+   ========================================================== */
+
+
+/* ==========================================================
+   1. COLOURS
+   Variables let us write a colour once and reuse it.
+   Use it with var(--name).
+   ========================================================== */
+:root {
+    --bg: #050b18;          /* page background */
+    --card: #0d1a2f;        /* card background */
+    --card-2: #12233f;      /* slightly lighter card background */
+    --text: #e6f1ff;        /* main text */
+    --muted: #8fa6c4;       /* softer grey-blue text */
+    --accent: #22d3ee;      /* neon cyan */
+    --border: #1e3a5f;      /* card borders */
+}
+
+
+/* ==========================================================
+   2. BASE STYLES
+   ========================================================== */
+
+/* Remove the browser's default spacing and make width include
+   padding and border, so sizes are easier to predict */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;        /* nav links glide to their section */
+    scroll-padding-top: 80px;       /* leaves room for the sticky navbar */
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Custom cursor: a small image (images/cursor.png).
+   The numbers 16 16 are the point of the cursor (its centre).
+   "auto" is the normal cursor, used if the image can't load. */
+body,
+a,
+button {
+    cursor: url("images/cursor.png") 16 16, auto;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+h2,
+h3 {
+    margin-bottom: 8px;
+}
+
+/* Centres the content and stops it getting too wide */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.note {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   3. NAVBAR
+   position: sticky keeps it at the top while you scroll.
+   z-index keeps it above the content that scrolls beneath it.
+   ========================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;     /* logo left, links right */
+    align-items: center;                /* vertical centring */
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.logo {
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+
+/* ==========================================================
+   4. BUTTONS
+   transition makes the hover change smooth instead of instant.
+   ========================================================== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent);
+    color: #04121f;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);        /* moves the button up a little */
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent);
+    color: #04121f;
+}
+
+.btn-small {
+    padding: 6px 14px;
+    font-size: 14px;
+}
+
+/* Used for the buttons inside the hero and the project cards */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;                    /* buttons drop to the next line if needed */
+    gap: 12px;
+    margin-top: 16px;
+}
+
+
+/* ==========================================================
+   5. CARDS
+   Box model: padding (space inside), border, border-radius
+   (rounded corners) and margin (space outside).
+   ========================================================== */
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+/* Add "lift" to a card to make it rise when you hover over it */
+.lift {
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.lift:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+/* Small grey uppercase heading used inside cards */
+.label {
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.big-text {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* A card that is also a link: keep the normal text colour */
+.link-card,
+.contact-card {
+    display: block;
+    color: var(--text);
+}
+
+
+/* ==========================================================
+   6. HERO
+   CSS Grid: two columns, the terminal is twice as wide (2fr)
+   as the profile card (1fr).
+   ========================================================== */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: center;
+    animation: fadeUp 1s;               /* see section 15 */
+}
+
+.terminal {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;                   /* keeps the title bar inside the rounded corners */
+}
+
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: var(--card-2);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;                 /* 50% turns a square into a circle */
+}
+
+.red    { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green  { background-color: #27c93f; }
+
+.terminal-title {
+    margin-left: 10px;
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.terminal-body {
+    padding: 28px;
+    font-family: monospace;
+}
+
+.terminal-body .muted {
+    margin-top: 16px;
+    margin-bottom: 2px;
+}
+
+.terminal-body .muted:first-child {
+    margin-top: 0;
+}
+
+.prompt {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.terminal-body h1 {
+    color: var(--accent);
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+.intro {
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+}
+
+.cursor {
+    color: var(--accent);
+    animation: blink 1s infinite;       /* see section 15 */
+}
+
+/* Profile card */
+.profile {
+    text-align: center;
+    font-family: monospace;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 16px;
+    border: 4px solid var(--accent);
+    border-radius: 50%;
+    color: var(--accent);
+    font-size: 44px;
+    font-weight: bold;
+}
+
+.player-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.level {
+    color: var(--accent);
+    font-size: 13px;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Small green "online" dot */
+.live {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 6px;
+    background-color: #27c93f;
+    border-radius: 50%;
+}
+
+
+/* ==========================================================
+   7. SECTIONS
+   ========================================================== */
+.section-head {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-family: monospace;
+    margin-bottom: 0;
+}
+
+.section-head h2 {
+    font-size: 36px;
+}
+
+.sub-head {
+    margin-top: 40px;
+    margin-bottom: 16px;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 20px;
+}
+
+
+/* ==========================================================
+   8. BENTO GRID (About and Beyond Code)
+   CSS Grid with 4 equal columns (repeat(4, 1fr)).
+   .wide spans 2 columns and .tall spans 2 rows.
+   ========================================================== */
+.bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+.bento h3 {
+    font-size: 26px;
+}
+
+.bento .tall p {
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   9. SKILLS, PILLS AND SMALL ROWS
+   ========================================================== */
+
+/* Flexbox row that wraps. Each child grows to share the space
+   (flex: 1) but never gets narrower than 200px (the last number). */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.cards > * {
+    flex: 1 1 200px;
+}
+
+.cards.small > * {
+    flex-basis: 120px;                  /* smaller cards for the skills */
+}
+
+.skill {
+    text-align: center;
+}
+
+.skill-name {
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* "Pills": small rounded tags with a dashed border */
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.pills li {
+    padding: 4px 14px;
+    border: 1px dashed var(--accent);
+    border-radius: 20px;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* A wide card with a label on the left and pills on the right */
+.row-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+    margin-top: 24px;
+}
+
+.row-card p,
+.row-card .pills {
+    margin-bottom: 0;
+}
+
+.row-card p {
+    color: var(--muted);
+    font-family: monospace;
+}
+
+
+/* ==========================================================
+   10. PROJECTS
+   ========================================================== */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    padding: 0;                         /* the preview should touch the card edges */
+    overflow: hidden;
+}
+
+/* The coloured banner at the top of each project card */
+.preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    color: white;
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.blue   { background-color: #2563eb; }
+.orange { background-color: #ea580c; }
+.green.preview { background-color: #059669; }
+.purple { background-color: #7c3aed; }
+
+.project-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;                            /* fills the card so buttons line up */
+    padding: 22px;
+}
+
+.project-body h3 {
+    font-size: 21px;
+}
+
+.project-body p {
+    flex: 1;                            /* pushes the pills and buttons to the bottom */
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   11. TIMELINE
+   A vertical line (the left border) with cards beside it.
+   ========================================================== */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 24px;
+    border-left: 3px solid var(--accent);
+}
+
+.date {
+    margin-bottom: 0;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   12. CONTACT AND FORM
+   ========================================================== */
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-card {
+    overflow-wrap: anywhere;            /* long email wraps instead of overflowing */
+}
+
+.contact-value {
+    margin-bottom: 0;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 13px;
+}
+
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+
+/* ==========================================================
+   13. FOOTER
+   ========================================================== */
+.footer {
+    padding: 40px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* ==========================================================
+   14. CASE STUDY PAGE (projects/textile-management-system.html)
+   Reuses the cards, pills and buttons above.
+   ========================================================== */
+.case-title {
+    margin-top: 8px;
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+.lead {
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.case-note {
+    margin-top: 20px;
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.cards.modules > * {
+    flex-basis: 240px;
+}
+
+.module h3 {
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 17px;
+}
+
+.module p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.module .fields {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    color: var(--text);
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.op-name {
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+code {
+    padding: 2px 8px;
+    background-color: var(--card-2);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.steps {
+    padding-left: 24px;
+}
+
+.steps li {
+    margin-bottom: 12px;
+}
+
+.back {
+    margin-top: 40px;
+}
+
+
+/* ==========================================================
+   15. ANIMATIONS
+   @keyframes describes the steps; "animation" on an element
+   says which one to play, how long, and how often.
+   ========================================================== */
+
+/* Hero slides up and fades in when the page loads */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* The "_" after the tagline blinks like a terminal cursor */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* The profile avatar floats up and down forever */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+
+/* The green "online" dot pulses (grows and fades) */
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.7); }
+    100% { box-shadow: 0 0 0 8px rgba(39, 201, 63, 0); }
+}
+
+.avatar {
+    animation: float 3s ease-in-out infinite;
+}
+
+.live {
+    animation: pulse 1.5s infinite;
+}
+
+/* The hero card and profile card slide in one after the other */
+.terminal {
+    animation: fadeUp 0.8s;
+}
+
+.profile {
+    animation: fadeUp 1.2s;
+}
+
+/* Section titles fade in when the page loads */
+.section-head {
+    animation: fadeUp 0.8s;
+}
+
+
+/* ==========================================================
+   15b. MORE TRANSITIONS (smooth hover effects)
+   ========================================================== */
+
+/* Nav links get an underline that appears smoothly */
+.nav-links a {
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.nav-links a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* Pressing a button makes it shrink slightly */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Pills fill with colour on hover */
+.pills li {
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.pills li:hover {
+    background-color: var(--accent);
+    color: #04121f;
+    transform: scale(1.08);
+}
+
+/* Skill cards grow a little */
+.skill:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Project banner text spreads out when the card is hovered */
+.preview {
+    transition: letter-spacing 0.4s;
+}
+
+.project:hover .preview {
+    letter-spacing: 3px;
+}
+
+/* Timeline cards slide to the right */
+.timeline .card {
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.timeline .card:hover {
+    transform: translateX(10px);
+    border-color: var(--accent);
+}
+
+/* Form boxes glow smoothly when you click inside */
+input, textarea {
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 8px var(--accent);
+}
+
+
+/* ==========================================================
+   16. RESPONSIVE
+   Media queries apply their styles only on smaller screens.
+   ========================================================== */
+
+/* Tablets and smaller */
+@media (max-width: 900px) {
+
+    .hero-grid,
+    .contact {
+        grid-template-columns: 1fr;     /* stack into one column */
+    }
+
+    .bento {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tall {
+        grid-row: auto;
+    }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    /* Logo on top, links wrap underneath */
+    .nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 16px;
+    }
+
+    .terminal-body {
+        padding: 20px;
+    }
+
+    .terminal-body h1,
+    .case-title {
+        font-size: 32px;
+    }
+
+    .section-head h2 {
+        font-size: 28px;
+    }
+
+    .bento,
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .wide {
+        grid-column: auto;
+    }
+}

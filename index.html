@@ -3,428 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tanay Agarwal - first-year CS & AI student who learns by building. Portfolio of projects built with HTML and CSS.">
-    <title>Tanay Agarwal | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Flexbox Quest</title>
+    <link rel="stylesheet" href="style (2).css">
 </head>
 
 <body>
 
-    <!-- ==================== NAVBAR ==================== -->
-    <header class="navbar">
-        <nav class="container nav">
-            <a href="#hero" class="logo">&lt;TA/&gt;</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#journey">Journey</a></li>
-                <li><a href="#beyond">Beyond</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- PART 3: Game Header (flex row: title | info | buttons) -->
+    <header class="game-header">
+
+        <h1>Flexbox Quest</h1>
+
+        <div class="game-info">
+            <span>Lives: 3</span>
+            <span>Coins: 120</span>
+            <span>Level: 1</span>
+            <!-- Bonus 2: Score -->
+            <span class="score">Score: 1250</span>
+        </div>
+
+        <div class="header-actions">
+            <button>Pause</button>
+            <button>Menu</button>
+        </div>
+
     </header>
 
     <main>
 
-        <!-- ==================== HERO ==================== -->
-        <section id="hero" class="container section">
-            <div class="hero-grid">
+        <!-- PART 4: Game Area (flex column, no positioning) -->
+        <section class="game-area">
 
-                <div class="terminal">
-                    <div class="terminal-bar">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">tanay@portfolio: ~</span>
-                    </div>
+            <!-- Bonus 3: Game message -->
+            <p class="game-message">Collect all the stars!</p>
 
-                    <div class="terminal-body">
-                        <p class="muted"><span class="prompt">$</span> whoami</p>
-                        <h1>Tanay Agarwal</h1>
-
-                        <p class="muted"><span class="prompt">$</span> role</p>
-                        <p>BSc in CS &amp; AI &middot; 1st Year</p>
-
-                        <p class="muted"><span class="prompt">$</span> echo $TAGLINE</p>
-                        <p>Turning bugs into features since 2026<span class="cursor">_</span></p>
-
-                        <p class="muted"><span class="prompt">$</span> cat intro.txt</p>
-                        <p class="intro">First-year CS &amp; AI student who thinks every bug is just a puzzle in disguise, and who learns best by building.</p>
-
-                        <div class="buttons">
-                            <a href="#projects" class="btn">View My Work</a>
-                            <a href="https://github.com/TanayAgarwal18" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="https://www.linkedin.com/in/tanay-agarwal-5a61913a0" class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                            <a href="Tanay_Agarwal_Resume.pdf" class="btn btn-outline" target="_blank">Resume</a>
-                        </div>
-                    </div>
-                </div>
-
-                <aside class="card profile">
-                    <div class="avatar">TA</div>
-                    <p class="label">Player 01</p>
-                    <p class="player-name">Tanay Agarwal</p>
-                    <p class="level">LEVEL 1 &middot; CS &amp; AI</p>
-                    <p class="status"><span class="live"></span> Building in public</p>
-                </aside>
-
+            <!-- Row 1: player on the left, star on the right -->
+            <div class="game-row">
+                <div class="player">PLAYER</div>
+                <div class="star">STAR &#9733;</div>
             </div>
+
+            <!-- Row 2: one centred platform -->
+            <div class="game-row">
+                <div class="platform">PLATFORM</div>
+            </div>
+
+            <!-- Row 3: two platforms spread apart -->
+            <div class="game-row">
+                <div class="platform">PLATFORM</div>
+                <div class="platform">PLATFORM</div>
+            </div>
+
         </section>
 
-        <!-- ==================== ABOUT ==================== -->
-        <section id="about" class="container section">
-            <div class="section-head">
-                <p class="eyebrow">01 &mdash; who i am</p>
-                <h2>About Me</h2>
-            </div>
+        <!-- PART 5: three panels in one row -->
+        <section class="game-panels">
 
-            <div class="bento">
+            <!-- PART 6: Controls -->
+            <div class="panel controls">
+                <h2>Controls</h2>
 
-                <article class="card lift wide tall">
-                    <h3>Hello, world &#128075;</h3>
-                    <p>I'm a first-year Computer Science &amp; AI student who loves solving problems and breaking big ideas into small, buildable pieces.</p>
-                    <p>I learn best by building projects &mdash; every bug is a puzzle, and every fix is a level cleared.</p>
-                </article>
-
-                <article class="card lift">
-                    <p class="label">Focus</p>
-                    <p class="big-text">Problem solving &amp; DSA</p>
-                </article>
-
-                <article class="card lift">
-                    <p class="label">Goal</p>
-                    <p class="big-text">Build my own startup</p>
-                </article>
-
-                <a class="card lift link-card" href="https://github.com/TanayAgarwal18" target="_blank" rel="noopener noreferrer">
-                    <p class="label">Code</p>
-                    <p class="big-text">GitHub &rarr;</p>
-                </a>
-
-                <a class="card lift link-card" href="https://www.linkedin.com/in/tanay-agarwal-5a61913a0" target="_blank" rel="noopener noreferrer">
-                    <p class="label">Network</p>
-                    <p class="big-text">LinkedIn &rarr;</p>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- ==================== SKILLS ==================== -->
-        <section id="skills" class="container section">
-            <div class="section-head">
-                <p class="eyebrow">02 &mdash; what i know</p>
-                <h2>Skills</h2>
-            </div>
-
-            <div class="cards small">
-                <div class="card lift skill">
-                    <p class="skill-name">HTML</p>
-                    <p class="note">Structure</p>
+                <div class="control-row">
+                    <button>&uarr;</button>
                 </div>
-                <div class="card lift skill">
-                    <p class="skill-name">CSS</p>
-                    <p class="note">Styling &amp; layout</p>
+
+                <div class="control-row">
+                    <button>&larr;</button>
+                    <button>&darr;</button>
+                    <button>&rarr;</button>
                 </div>
-                <div class="card lift skill">
-                    <p class="skill-name">Git</p>
-                    <p class="note">Version control</p>
-                </div>
-                <div class="card lift skill">
-                    <p class="skill-name">GitHub</p>
-                    <p class="note">Hosting code</p>
-                </div>
-                <div class="card lift skill">
-                    <p class="skill-name">Python</p>
-                    <p class="note">Programming</p>
-                </div>
-                <div class="card lift skill">
-                    <p class="skill-name">Java</p>
-                    <p class="note">Programming</p>
-                </div>
-                <div class="card lift skill">
-                    <p class="skill-name">SQL</p>
-                    <p class="note">Databases (MySQL)</p>
+
+                <div class="control-row">
+                    <button class="jump">Jump</button>
                 </div>
             </div>
 
-            <div class="card row-card">
-                <p>$ currently_learning</p>
-                <ul class="pills">
-                    <li>DSA</li>
-                    <li>JavaScript</li>
-                    <li>Node.js</li>
-                </ul>
-            </div>
-        </section>
+            <!-- PART 7: Inventory (Bonus 1: extra items, wraps automatically) -->
+            <div class="panel inventory">
+                <h2>Inventory</h2>
 
-        <!-- ==================== PROJECTS ==================== -->
-        <section id="projects" class="container section">
-            <div class="section-head">
-                <p class="eyebrow">03 &mdash; what i've built</p>
-                <h2>Projects</h2>
-            </div>
-
-            <div class="projects">
-
-                <article class="card lift project">
-                    <div class="preview blue">&lt;form&gt;</div>
-                    <div class="project-body">
-                        <h3>Student Portal</h3>
-                        <p>A college portal built with semantic HTML: profile and schedule tables, a skills list and a full course registration form with labels, radio buttons and checkboxes.</p>
-                        <ul class="pills">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Forms</li>
-                            <li>Tables</li>
-                        </ul>
-                        <div class="buttons">
-                            <a href="student-portal.html" class="btn btn-small">Live Demo</a>
-                            <a href="https://github.com/TanayAgarwal18" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card lift project">
-                    <div class="preview orange">display: flex;</div>
-                    <div class="project-body">
-                        <h3>Flexbox Quest</h3>
-                        <p>A mini game interface with a status header, game area, controls, inventory and quest panels, laid out entirely with Flexbox and made responsive with media queries.</p>
-                        <ul class="pills">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Flexbox</li>
-                            <li>Responsive</li>
-                        </ul>
-                        <div class="buttons">
-                            <a href="index.html" class="btn btn-small">Live Demo</a>
-                            <a href="https://github.com/TanayAgarwal18" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card lift project">
-                    <div class="preview green">$ whoami</div>
-                    <div class="project-body">
-                        <h3>This Portfolio</h3>
-                        <p>The site you're on right now: a terminal-style hero, a CSS Grid bento layout, a sticky navbar, hover transitions and keyframe animations, with zero JavaScript.</p>
-                        <ul class="pills">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Grid</li>
-                            <li>Animations</li>
-                        </ul>
-                        <div class="buttons">
-                            <a href="#hero" class="btn btn-small">Back to Top</a>
-                            <a href="https://github.com/TanayAgarwal18" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card lift project">
-                    <div class="preview purple">SELECT * FROM tms;</div>
-                    <div class="project-body">
-                        <h3>Textile Management System</h3>
-                        <p>A Python + MySQL console application that replaces paper records in a textile business. Eight linked tables (buyers, suppliers, inventory, orders, supplier orders, employees, shipping and payments), each with insert, update, delete, view and search. My CBSE Class XII Computer Science project.</p>
-                        <ul class="pills">
-                            <li>Python</li>
-                            <li>MySQL</li>
-                            <li>SQL</li>
-                            <li>CRUD</li>
-                        </ul>
-                        <div class="buttons">
-                            <a href="textile-management-system.html" class="btn btn-small">Case Study</a>
-                            <a href="https://github.com/TanayAgarwal18/Textile_Management_System/blob/main/TANAY%20TMS%20FINALEST%20COPY%20(1).pdf%20(1)%20(1).pdf" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="https://github.com/TanayAgarwal18/Textile_Management_System/blob/main/py.py" class="btn btn-small">View Code</a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- ==================== EDUCATION / JOURNEY ==================== -->
-        <section id="journey" class="container section">
-            <div class="section-head">
-                <p class="eyebrow">04 &mdash; where i'm going</p>
-                <h2>Education &amp; Journey</h2>
+                <div class="inventory-items">
+                    <div class="item">Sword</div>
+                    <div class="item">Shield</div>
+                    <div class="item">Potion</div>
+                    <div class="item">Key</div>
+                    <div class="item">Bow</div>
+                    <div class="item">Magic Potion</div>
+                    <div class="item">Map</div>
+                    <div class="item">Coin</div>
+                </div>
             </div>
 
-            <div class="timeline">
+            <!-- PART 8: Quest -->
+            <div class="panel quest">
+                <h2>Quest</h2>
 
-                <div class="card">
-                    <p class="date">2026 &mdash; Present</p>
-                    <h3>BSc in Computer Science &amp; AI</h3>
-                    <p class="note">Scaler School of Technology</p>
+                <div class="quest-item">
+                    <span>Collect 3 Stars</span>
+                    <span>1 / 3</span>
                 </div>
 
-                <div class="card">
-                    <p class="date">Now</p>
-                    <h3>Learning web development by building</h3>
-                    <p class="note">Shipped Student Portal, Flexbox Quest and this portfolio. No professional experience yet &mdash; currently learning and building projects as part of my web development journey.</p>
+                <div class="quest-item">
+                    <span>Find the Golden Key</span>
+                    <span>0 / 1</span>
                 </div>
 
-                <div class="card">
-                    <p class="date">2025 &mdash; 2026</p>
-                    <h3>CBSE Grade XII (AISSCE), Computer Science</h3>
-                    <p class="note">Spring Mount Public School, Tirupur. Scored 93% in Grade XII and 96% in Grade X (CBSE). Built the Textile Management System in Python and MySQL.</p>
+                <div class="quest-item">
+                    <span>Defeat the Monster</span>
+                    <span>0 / 1</span>
                 </div>
-
-            </div>
-        </section>
-
-        <!-- ==================== BEYOND CODE ==================== -->
-        <section id="beyond" class="container section">
-            <div class="section-head">
-                <p class="eyebrow">05 &mdash; beyond code</p>
-                <h2>Beyond Code</h2>
             </div>
 
-            <div class="bento">
-
-                <article class="card lift wide">
-                    <p class="label">Hobbies</p>
-                    <ul class="pills">
-                        <li>Sleeping</li>
-                        <li>Sports</li>
-                        <li>Mobile games</li>
-                        <li>Watching movies</li>
-                    </ul>
-                    <p class="note">Sleeping is my most unusual hobby. Games: Mech Arena, and BGMI sometimes.</p>
-                </article>
-
-                <article class="card lift">
-                    <p class="label">Sports I play</p>
-                    <ul class="pills">
-                        <li>Table tennis</li>
-                        <li>Cricket</li>
-                        <li>Lawn tennis</li>
-                        <li>Pickleball</li>
-                        <li>Basketball (rarely)</li>
-                    </ul>
-                </article>
-
-                <article class="card lift">
-                    <p class="label">Music</p>
-                    <ul class="pills">
-                        <li>Bollywood</li>
-                        <li>Anirudh BGM</li>
-                        <li>Eminem</li>
-                    </ul>
-                </article>
-
-                <article class="card lift wide">
-                    <p class="label">Favourite movies</p>
-                    <ul class="pills">
-                        <li>Zindagi Na Milegi Dobara</li>
-                        <li>Kal Ho Naa Ho</li>
-                        <li>Inception</li>
-                        <li>Shutter Island</li>
-                        <li>PK</li>
-                    </ul>
-                    <p class="label">Shows &amp; anime</p>
-                    <ul class="pills">
-                        <li>Stranger Things</li>
-                        <li>Demon Slayer</li>
-                        <li>Naruto</li>
-                    </ul>
-                </article>
-
-                <article class="card lift">
-                    <p class="label">Currently</p>
-                    <p class="big-text">Figuring out my interest in tech</p>
-                    <p class="note">Learning DSA, JavaScript and Node.js along the way.</p>
-                </article>
-
-                <article class="card lift">
-                    <p class="label">Fun fact</p>
-                    <p class="big-text">Professional overthinker</p>
-                </article>
-
-            </div>
-
-            <div class="card row-card">
-                <p>$ favourite_food</p>
-                <ul class="pills">
-                    <li>Cheeseburger</li>
-                    <li>Egg dosa</li>
-                    <li>Waffles</li>
-                </ul>
-            </div>
-
-            <h3 class="sub-head">Achievements</h3>
-
-            <div class="bento">
-                <article class="card lift wide">
-                    <p class="label">Abacus competition</p>
-                    <p class="big-text">2nd place</p>
-                    <p class="note">Level 6 (Advance 2), Tamil Nadu West</p>
-                </article>
-
-                <article class="card lift wide">
-                    <p class="label">Table tennis, Tirupur Sahodaya</p>
-                    <p class="big-text">2nd place, singles and doubles</p>
-                    <p class="note">U-19 category</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- ==================== CONTACT ==================== -->
-        <section id="contact" class="container section">
-            <div class="section-head">
-                <p class="eyebrow">06 &mdash; let's connect</p>
-                <h2>Let's build something together</h2>
-            </div>
-
-            <div class="contact">
-
-                <div class="contact-links">
-                    <a class="card lift contact-card" href="mailto:tanay.26bsc10783@sst.scaler.com">
-                        <p class="label">Email</p>
-                        <p class="contact-value">tanay.26bsc10783@sst.scaler.com</p>
-                    </a>
-                    <a class="card lift contact-card" href="https://github.com/TanayAgarwal18" target="_blank" rel="noopener noreferrer">
-                        <p class="label">GitHub</p>
-                        <p class="contact-value">github.com/TanayAgarwal18</p>
-                    </a>
-                    <a class="card lift contact-card" href="https://www.linkedin.com/in/tanay-agarwal-5a61913a0" target="_blank" rel="noopener noreferrer">
-                        <p class="label">LinkedIn</p>
-                        <p class="contact-value">linkedin.com/in/tanay-agarwal</p>
-                    </a>
-                    <a class="card lift contact-card" href="Tanay_Agarwal_Resume.pdf" target="_blank">
-                        <p class="label">Resume</p>
-                        <p class="contact-value">Download PDF</p>
-                    </a>
-                </div>
-
-                <!-- Front-end only form: opens the visitor's email app (no backend needed) -->
-                <form class="card" action="mailto:tanay.26bsc10783@sst.scaler.com" method="post" enctype="text/plain">
-                    <label for="c-name">Name</label>
-                    <input type="text" id="c-name" name="name" placeholder="Your name" required>
-
-                    <label for="c-email">Email</label>
-                    <input type="email" id="c-email" name="email" placeholder="you@example.com" required>
-
-                    <label for="c-message">Message</label>
-                    <textarea id="c-message" name="message" rows="5" placeholder="Say hi, or tell me about your idea..." required></textarea>
-
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-
-            </div>
         </section>
 
     </main>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
-        <p>&copy; 2026 Tanay Agarwal</p>
-        <p>Built with HTML &amp; CSS &hearts;</p>
-        <ul class="footer-links">
-            <li><a href="https://github.com/TanayAgarwal18" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/tanay-agarwal-5a61913a0" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="mailto:tanay.26bsc10783@sst.scaler.com">Email</a></li>
-        </ul>
+    <footer class="game-footer">
+        <p>Flexbox Quest &copy; 2026 | Made by Tanay Agarwal</p>
+        <!-- Links are inline elements: they sit on the same line -->
+        <p class="footer-links">
+            <a href="display-demo.html">Display Demo</a>
+            <a href="#">Help</a>
+            <a href="#">About</a>
+            <a href="../index (5).html#projects" class="btn">Back to all projects</a>
+        </p>
     </footer>
 
 </body>

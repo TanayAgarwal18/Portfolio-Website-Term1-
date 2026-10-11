@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textile Management System | Tanay Agarwal</title>
+    <!-- This page is inside /projects, so the stylesheet is one folder up -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="container nav">
+            <a href="index.html" class="logo">&lt;TA/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- Title -->
+        <section class="section">
+            <p class="eyebrow">project case study</p>
+            <h1 class="case-title">Textile Management System</h1>
+            <p class="lead">A Python and MySQL console application that replaces paper records in a textile business with one central database.</p>
+            <ul class="pills">
+                <li>Python</li>
+                <li>MySQL</li>
+                <li>SQL</li>
+                <li>mysql.connector</li>
+            </ul>
+            <p class="case-note">CBSE Class XII Computer Science project, 2025&ndash;2026. It runs in the terminal, so this page is the walkthrough instead of a live demo.</p>
+        </section>
+
+        <!-- Problem -->
+        <section class="section">
+            <div class="section-head">
+                <p class="eyebrow">01 &mdash; why it exists</p>
+                <h2>The problem</h2>
+            </div>
+            <article class="card">
+                <h3>Paper records don't scale</h3>
+                <p>Managing a textile business by hand leads to errors in record-keeping, duplicated data and no easy way to track stock. Paper files are slow to update, easy to lose and hard to search.</p>
+                <p>This system keeps buyers, suppliers, stock, orders, staff, shipping and payments in one database, so the data is quick to find, easy to update and stored safely.</p>
+            </article>
+        </section>
+
+        <!-- Modules -->
+        <section class="section">
+            <div class="section-head">
+                <p class="eyebrow">02 &mdash; what it does</p>
+                <h2>The 8 modules</h2>
+            </div>
+            <div class="cards modules">
+            <article class="card lift module">
+                <h3>Buyer Details</h3>
+                <p>Customer records with contact information, GST number and shipping details.</p>
+                <p class="fields">Buyer ID, name, shipping address, email, GST number, contact</p>
+            </article>
+            <article class="card lift module">
+                <h3>Supplier Details</h3>
+                <p>Supplier contact data, payment terms and an overall service rating.</p>
+                <p class="fields">Supplier ID, name, contact person, address, payment terms, rating</p>
+            </article>
+            <article class="card lift module">
+                <h3>Inventory</h3>
+                <p>Fabric, yarn and finished products with their material, size and pattern.</p>
+                <p class="fields">Product ID, name, description, category, size, material, fabric type, pattern</p>
+            </article>
+            <article class="card lift module">
+                <h3>Orders</h3>
+                <p>Orders placed by buyers: items, quantity, pricing, status and tracking number.</p>
+                <p class="fields">Order ID, buyer, date, status, product, quantity, total price, shipping address, tracking number</p>
+            </article>
+            <article class="card lift module">
+                <h3>Supplier Orders</h3>
+                <p>Orders placed with suppliers for raw material or finished goods, including a fine for late delivery.</p>
+                <p class="fields">Supplier ID, order ID, material, fabric type, quantity, total cost, fine, shipping address</p>
+            </article>
+            <article class="card lift module">
+                <h3>Employee Details</h3>
+                <p>Staff records, departments and payroll-related data.</p>
+                <p class="fields">Employee ID, name, department, salary, hire and termination date, attendance, overtime</p>
+            </article>
+            <article class="card lift module">
+                <h3>Shipping Details</h3>
+                <p>Shipping records that keep order tracking and delivery on time.</p>
+                <p class="fields">Order ID, buyer ID, status, items shipped, shipping address, shipping method</p>
+            </article>
+            <article class="card lift module">
+                <h3>Payment Details</h3>
+                <p>Payments, due dates, remaining balance and penalties.</p>
+                <p class="fields">Order ID, due date, total amount, remaining payment, method, status, fine</p>
+            </article>
+            </div>
+        </section>
+
+        <!-- Operations -->
+        <section class="section">
+            <div class="section-head">
+                <p class="eyebrow">03 &mdash; how each module works</p>
+                <h2>Five operations on every table</h2>
+            </div>
+            <div class="cards">
+            <article class="card lift">
+                <p class="op-name">Insert</p>
+                <code>INSERT INTO ...</code>
+                <p>Asks for each field, adds the record and confirms.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">Update</p>
+                <code>UPDATE ... WHERE id</code>
+                <p>Finds a record by its ID and changes the chosen values.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">Delete</p>
+                <code>DELETE ... WHERE id</code>
+                <p>Removes a record and shows how many were deleted.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">View</p>
+                <code>SELECT * FROM ...</code>
+                <p>Fetches every record and prints each one.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">Search</p>
+                <code>SELECT ... WHERE id</code>
+                <p>Looks up one record by ID, or says if there is no match.</p>
+            </article>
+            </div>
+        </section>
+
+        <!-- Python + MySQL -->
+        <section class="section">
+            <div class="section-head">
+                <p class="eyebrow">04 &mdash; under the hood</p>
+                <h2>How Python talks to MySQL</h2>
+            </div>
+            <ol class="steps">
+                <li><strong>Import</strong> the <code>mysql.connector</code> module to communicate with the database.</li>
+                <li><strong>Connect</strong> with <code>connect()</code> using the host, user, password and database name.</li>
+                <li><strong>Create a cursor</strong> with <code>cursor()</code> to run SQL operations.</li>
+                <li><strong>Run the query</strong> with <code>execute()</code>.</li>
+                <li><strong>Read the results</strong> with <code>fetchall()</code>, <code>fetchone()</code> or <code>fetchmany()</code>.</li>
+                <li><strong>Close</strong> the connection with <code>close()</code> when the work is done.</li>
+            </ol>
+            <div class="card row-card">
+                <p>$ stack</p>
+                <ul class="pills">
+                    <li>Python 3.8.5</li>
+                    <li>MySQL</li>
+                    <li>Windows</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Future scope -->
+        <section class="section">
+            <div class="section-head">
+                <p class="eyebrow">05 &mdash; what's next</p>
+                <h2>Future scope</h2>
+            </div>
+            <div class="cards">
+            <article class="card lift">
+                <p class="op-name">Smart analytics</p>
+                <p>Connect to IoT, AI and machine learning for real-time monitoring and predictive reports.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">Cloud</p>
+                <p>Move to a cloud platform for remote, scalable operation.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">Sustainability</p>
+                <p>Track waste and carbon footprint to support eco-friendly production.</p>
+            </article>
+            <article class="card lift">
+                <p class="op-name">Integration</p>
+                <p>Link with supply chain and ERP systems, from sourcing to delivery.</p>
+            </article>
+            </div>
+            <p class="back buttons">
+                <a href="https://github.com/TanayAgarwal18/Textile_Management_System/blob/main/TANAY%20TMS%20FINALEST%20COPY%20(1).pdf%20(1)%20(1).pdf" class="btn" target="_blank" rel="noopener noreferrer">View Project on GitHub</a>
+                <a href="../index (5).html#projects" class="btn">Back to all projects</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tanay Agarwal</p>
+        <ul class="footer-links">
+            <li><a href="https://github.com/TanayAgarwal18" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tanay-agarwal-5a61913a0" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:tanay.26bsc10783@sst.scaler.com">Email</a></li>
+        </ul>
+    </footer>
+
+</body>
+</html>
